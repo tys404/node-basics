@@ -1,3 +1,24 @@
 {
-    "type": "module"
+  "type": "module",
+  "name": "node-basics",
+  "description": "Training app for node.js learning",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tys404/node-basics.git"
+  },
+  "author": "Krzysztof Tys",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tys404/node-basics/issues"
+  },
+  "homepage": "https://github.com/tys404/node-basics#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
