@@ -5,13 +5,9 @@ class Product {
         this.title = title;
     }
 
-    save() {
-        products.push(this);
-    }
+    save = () => products.push(this);
 
-    static fetchAll() {
-        return products;
-    }
+    static fetchAll = () => products;
 }
 
 export default Product;
