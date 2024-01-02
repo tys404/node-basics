@@ -4,7 +4,7 @@ import path from 'path';
 
 import adminRoutes from './routes/admin.js';
 import shopRoutes from './routes/shop.js';
-import rootDir from './util/path.js';
+import { rootDir } from './util/files.js';
 import { render404 } from './controllers/error.js';
 
 const app = express();

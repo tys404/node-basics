@@ -1,9 +1,7 @@
 import Product from "../models/product.js";
 
 const renderShop = (req, res, next) => {
-    const products = Product.fetchAll();
-
-    res.render('shop', {
+    const renderShop = (products) => res.render('shop', {
         prods: products,
         pageTitle: 'Shop',
         path: '/',
@@ -11,6 +9,8 @@ const renderShop = (req, res, next) => {
         activeShop: true,
         productCSS: true
     });
+
+    Product.fetchAll(renderShop);
 };
 
 const renderAddProduct = (req, res, next) => {
