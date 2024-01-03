@@ -1,20 +1,18 @@
 import Product from "../models/product.js";
 
-const renderShop = (req, res, next) => {
-    const renderShop = (products) => res.render('shop', {
+
+const renderAdminProducts = (req, res, next) => {
+    const renderAdminProducts = (products) => res.render('admin/products', {
         prods: products,
-        pageTitle: 'Shop',
-        path: '/',
-        hasProducts: products.length > 0,
-        activeShop: true,
-        productCSS: true
+        pageTitle: 'Admin Products',
+        path: '/admin/products'
     });
 
-    Product.fetchAll(renderShop);
+    Product.fetchAll(renderAdminProducts);
 };
 
 const renderAddProduct = (req, res, next) => {
-    res.render('add-product', {
+    res.render('admin/add-product', {
         pageTitle: 'Add Product',
         path: '/admin/add-product',
         formsCSS: true,
@@ -24,14 +22,15 @@ const renderAddProduct = (req, res, next) => {
 }
 
 const addProduct = (req, res, next) => {
-    const newProduct = new Product(req.body.title);
-    newProduct.save();
+    const { title, imageUrl, description, price } = req.body;
 
+    const product = new Product(title, imageUrl, description, price);
+    product.save();
     res.redirect('/');
 }
 
 export {
-    renderShop,
     renderAddProduct,
+    renderAdminProducts,
     addProduct
 }

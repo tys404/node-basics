@@ -1,10 +1,15 @@
 import express from 'express';
-import { addProduct, renderAddProduct } from '../controllers/products.js';
+import { addProduct, renderAdminProducts, renderAddProduct } from '../controllers/products.js';
 
 const router = express.Router();
 
-router.get('/add-product', renderAddProduct);
+router.get('/admin/add-product', (req, res, next) => {
+    renderAddProduct(req, res, next);
+});
 
-router.post('/add-product', addProduct);
+router.get('/admin/products', renderAdminProducts);
+
+router.post('/admin/add-product', addProduct);
+
 
 export default router;
