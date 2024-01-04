@@ -4,6 +4,7 @@ import { openProductsFile, createFileWithProduct, updateFileWithProduct } from '
 
 class Product {
     constructor(title, imageUrl, description, price) {
+        this.id = Math.random().toString();
         this.title = title;
         this.imageUrl = imageUrl;
         this.description = description;
@@ -21,6 +22,14 @@ class Product {
             fileContent => callback(JSON.parse(fileContent)),
         )
     };
+
+    static findById = (productId, callback) => {
+        this.fetchAll(products => {
+            const product = products.find(product => product.id === productId);
+
+            callback(product);
+        });
+    }
 }
 
 export default Product;

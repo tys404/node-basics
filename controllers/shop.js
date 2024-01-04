@@ -13,6 +13,8 @@ const getShop = (req, res, next) => {
     Product.fetchAll(renderShop);
 };
 
+// below JSDoc comment enables intelisense for the handler
+/** @type {import("express").RequestHandler} */
 const getProducts = (req, res, next) => {
     Product.fetchAll(products => {
         res.render('shop/product-list', {
@@ -21,6 +23,19 @@ const getProducts = (req, res, next) => {
             path: '/products'
         });
     });
+};
+
+const getProductById = (req, res, next) => {
+    // Express already provides params parameter in req object
+    const productId = req.params.id;
+
+    const renderProductDetails = product => res.render('shop/product-detail', {
+        product: product,
+        pageTitle: product.title,
+        path: '/products',
+    });
+
+    Product.findById(productId, renderProductDetails);
 };
 
 const getIndex = (req, res, next) => {
@@ -57,6 +72,7 @@ const getCheckout = (req, res, next) => {
 export {
     getShop,
     getProducts,
+    getProductById,
     getIndex,
     getCart,
     getOrders,

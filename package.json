@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/tys404/node-basics#readme",
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "nodemon": "^3.0.2"
   },
   "dependencies": {
